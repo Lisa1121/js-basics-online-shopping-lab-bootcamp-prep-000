@@ -1,4 +1,4 @@
-+ var temp = item;
+var temp = item;
  item = {[item]:(Math.floor(Math.random()*100))};
  cart.push(item);
  console.log(`${temp} has been added to your cart.`);

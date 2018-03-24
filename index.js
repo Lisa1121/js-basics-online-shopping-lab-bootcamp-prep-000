@@ -31,7 +31,11 @@ function viewCart() {
       if(i===cart.length-1){
         message+= `and ${Object.keys(cart[i])} at $${cart[i][Object.keys(cart[i])]}.`
       }
+      else {
+        message += `${Object.keys(cart[i])} at $${cart[i][Object.keys(cart[i])]}.`
+      }
     }
+    console.log(message)
   }
 }
 function total() {

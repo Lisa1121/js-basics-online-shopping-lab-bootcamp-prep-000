@@ -25,12 +25,12 @@ function viewCart() {
     return `In your cart, you have ${cart[0].itemName} at $${cart[0].itemPrice}.`
   }
   var message = "In your cart, you have "
-  for(Var i=0;i<cart.length;i++){
+  for(var i=0;i<cart.length;i++){
     if(i!==cart.length-1){
       message+=`${cart[i].itemName} at $${cart[i].itemPrice}, `
     }
     else {
-      message+= `and ${cart[i].itemName} at $${cart[i].itemPrice}.`]
+      message+= `and ${cart[i].itemName} at $${cart[i].itemPrice}.`
     }
   }
   return message

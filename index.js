@@ -23,9 +23,9 @@ function viewCart() {
   else {
     var itemName = ' '"
     var message = `In your cart, you have`
-    for (var i in cart)
-    for (let i=0; i<cart.length; i++){
-      for (var ke)
+    for (var i in cart) {
+      itemName = Object.keys(cart[i])
+      message += ` ${itemName} at $${cart[i] [itemName]},`
     }
   }
 }

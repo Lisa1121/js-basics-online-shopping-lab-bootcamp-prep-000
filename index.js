@@ -29,7 +29,7 @@ function viewCart() {
     var message = 'In your cart, you have'
     for(var i=0; i<cart.length; i++){
       if(i===cart.length-1){
-        message+= `and
+        message+= `and ${Object.keys(cart[i])} at $${cart[i][Object.keys(cart[i])]}.`
       }
     }
   }

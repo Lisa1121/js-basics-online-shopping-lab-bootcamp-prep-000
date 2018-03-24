@@ -1,51 +1,84 @@
-var cart = [];
-
-function getCart() {
++ var temp = item;
+ item = {[item]:(Math.floor(Math.random()*100))};
+ cart.push(item);
+ console.log(`${temp} has been added to your cart.`);
  return cart;
 }
 
-function setCart(c) {
-  cart = c;
-  return cart;
+function viewCart() {
+ var temp = "In your cart, you have ";
+ if (cart.length === 0) {
+ temp = "Your shopping cart is empty.";
+ } else if (cart.length === 1) {
+ let temp2 = Object.keys(cart[0]);
+ temp = temp + `${temp2} at $${cart[0][temp2]}.`;
+ } else if (cart.length === 2) {
+ let temp2 = Object.keys(cart[0]);
+ var temp3 = Object.keys(cart[1]);
+ temp = temp + `${temp2} at $${cart[0][temp2]} and ${temp3} at $${cart[1][temp3]}.`;
+ } else {
+ for (let i=0;cart.length>i;i++){
+ let temp2 = Object.keys(cart[i]);
+ if (i === cart.length-1){
+ temp = temp + `and ${temp2} at $${cart[i][temp2]}.`;
+ } else {
+ temp = temp + `${temp2} at $${cart[i][temp2]}, `;
+ }
+ }
+ }
+ console.log(temp);
 }
 
-function addToCart(item) {
-  const price = Math.floor(Math.random() * 100)
-  cart.push({[item]: price})
-  console.log(`${item} has been added to your cart.`)
-  return cart
+function total() {
+ var cost = 0;
+ for (let i=0;cart.length>i;i++) {
+ let temp = Object.keys(cart[i]);
+ cost = cost + cart[i][temp];
+ }
+ return cost;
 }
-function viewCart() {
-  const l = cart.length
-  if(!l){
-    return console.log(`Your shopping cart is empty.`)
-  }
-  const itemsAndPrices = []
-  for (let i = 0; i < l; i++){
-    let itemsAndPrice = cart[i]
-    let item = Object.keys(itemsAndPrice)[0]
-    let price = itemsAndPrice[item]
-    itemsAndPrices.push(`${item} at \$${price}`)
-  }
-  console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`)
-}
+
 function removeFromCart(item) {
-  let itemInCart = false
-  for(let i = 0, l = cart.length; i < l; i++) {
-    if (cart[i].hasOwnProperty(item)) {
-      itemInCart = true
-      cart = cart.slice(0, i).concat(cart.slice(i + 1))
-    }
-  }
-  if (!itemInCart) {
-    console.log(`That item is not in your cart.`)
-  }
-  return cart
+ var inCart = false;
+ var itemIndex = NaN;
+ for (let i=0;cart.length>i;i++) {
+ if (cart[i].hasOwnProperty(item)) {
+ inCart = true;
+ itemIndex = i;
+ }
+ }
+ if (inCart) {
+ cart.splice(itemIndex, itemIndex);
+ return cart;
+ } else {
+ console.log("That item is not in your cart.");
+ return cart;
+ }
 }
-function placeOrder(CCN) {
-  if (!CCN) {
-    return console.log(`We don\'t have a credit card on file for you to place your order.`)
-  }
-  console.log(`Your total cost is $${total()}, which will be charged to the card ${CCN}.`)
-  cart = []
+
+function placeOrder(cardNumber) {
+ if (cardNumber) {
+ console.log(`Your total cost is $${total()}, which will be charged to the card ${cardNumber}.`);
+ cart = [];
+ } else {
+ console.log("Sorry, we don't have a credit card on file for you.");
+ }
 }
+viewCart();
+addToCart("bananas");
+console.log(total());
+viewCart();
+placeOrder();
+removeFromCart("eggs");
+addToCart("pancake batter");
+console.log(total());
+viewCart();
+addToCart("eggs");
+placeOrder(5);
+viewCart();
+removeFromCart("eggs");
+addToCart("milk");
+viewCart();
+addToCart("cookies");
+viewCart();
+console.log(total()); 

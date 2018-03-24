@@ -39,11 +39,15 @@ function viewCart() {
   }
 }
 function total() {
-  // write your code here
+  var total =100
+  for(var i=0; i<cart.length; i++){
+    total+=cart[i][Object.keys(cart[i])]
+  }
+  return total
 }
 
 function removeFromCart(item) {
-  // write your code here
+  
 }
 
 function placeOrder(cardNumber) {

@@ -28,6 +28,7 @@ function viewCart() {
       msg += ` ${itemName} at $${cart[i][itemName]},`
     }
     console.log(msg.slice(0, -1) + '.')
+  }
 }
 function total() {
   // write your code here

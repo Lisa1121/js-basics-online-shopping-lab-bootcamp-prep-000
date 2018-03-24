@@ -21,13 +21,13 @@ function viewCart() {
     return(`Your shopping cart is empty.`)
   }
   else {
-    var itemName = ' '"
-    var message = `In your cart, you have`
+    var itemName = ''
+    var msg = 'In your cart, you have'
     for (var i in cart) {
       itemName = Object.keys(cart[i])
-      message += ` ${itemName} at $${cart[i] [itemName]},`
+      msg += ` ${itemName} at $${cart[i][itemName]},`
     }
-    console.log(message.slice(0, -1) + '.')
+    console.log(msg.slice(0, -1) + '.')
 }
 function total() {
   // write your code here

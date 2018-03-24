@@ -28,7 +28,7 @@ function viewCart() {
       message += ` ${itemName} at $${cart[i] [itemName]},`
     }
     console.log(message.slice(0, -1) + '.')
-  }
+}
 function total() {
   // write your code here
 }
